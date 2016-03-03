@@ -8,5 +8,5 @@ app.get('/', (request, response) => {
 });
 
 app.listen(3000, () => {
-	console.log('inventory app listening on port 3000');
+	console.log('inventory app listening on port 3000 and using nodemon');
 });
