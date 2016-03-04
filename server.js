@@ -5,11 +5,15 @@ const bodyParser = require('body-parser');
 const inventory = require('./inventory.js');
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded(({ extended: false })));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
-	response.send('Hello from Express!');
+	response.render('index', {
+		pageTitle: 'Inventory'
+	});
 });
 
 app.post('/item', (request, response) => {
