@@ -12,9 +12,15 @@ app.get('/', (request, response) => {
 	response.send('Hello from Express!');
 });
 
-app.post('/', (request, response) => {
+app.post('/item', (request, response) => {
 	let item = request.body;
 	inventory.addItem(item);
+	response.send(inventory.getAllItems());
+});
+
+app.delete('/item', (request, response) => {
+	let key = request.body.label;
+	inventory.deleteItem(key);
 	response.send(inventory.getAllItems());
 });
 

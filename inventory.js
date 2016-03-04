@@ -4,8 +4,10 @@ let inventory = {};
 
 let addItem = function(item) {
 	inventory[item.label] = item;
-	console.log(item);
-	console.log(inventory);
+};
+
+let deleteItem = function(key) {
+	delete inventory[key];
 };
 
 let getAllItems = function() {
@@ -14,5 +16,6 @@ let getAllItems = function() {
 
 module.exports = {
 	addItem,
+	deleteItem,
 	getAllItems
 };
