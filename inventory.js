@@ -3,11 +3,19 @@
 let inventory = {};
 
 let addItem = function(item) {
-	inventory[item.label] = item;
+	if (item.label in inventory) {
+		throw new Error('Item already exists');
+	} else {
+		inventory[item.label] = item;
+	}
 };
 
-let deleteItem = function(key) {
-	delete inventory[key];
+let deleteItem = function(label) {
+	if (label in inventory) {
+		delete inventory[label];
+	} else {
+		throw new Error('Item cannot be deleted as it does not exist');
+	}
 };
 
 let getAllItems = function() {

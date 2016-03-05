@@ -16,16 +16,30 @@ app.get('/', (request, response) => {
 	});
 });
 
+app.get('/item', (request, response) => {
+	response.send(inventory.getAllItems());
+})
+
 app.post('/item', (request, response) => {
 	let item = request.body;
-	inventory.addItem(item);
-	response.send(inventory.getAllItems());
+	try {
+		inventory.addItem(item);
+		response.status(201).send('Item created');
+	}
+	catch (error) {
+		response.status(409).send(error.message);
+	}
 });
 
-app.delete('/item', (request, response) => {
-	let key = request.body.label;
-	inventory.deleteItem(key);
-	response.send(inventory.getAllItems());
+app.delete('/item/:label', (request, response) => {
+	let label = request.params.label;
+	try {
+		inventory.deleteItem(label);
+		response.status(204).send();
+	} 
+	catch (error) {
+		response.status(404).send(error.message);
+	}
 });
 
 app.listen(3000, () => {
