@@ -6,6 +6,7 @@ const inventory = require('./inventory.js');
 const app = express();
 
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3000);
 
 app.use(bodyParser.urlencoded(({ extended: false })));
 app.use(bodyParser.json());
@@ -42,8 +43,8 @@ app.delete('/items/:label', (request, response) => {
 	}
 });
 
-var server = app.listen(3000, () => {
-	console.log('inventory app listening on port 3000 and using nodemon');
+var server = app.listen(app.get('port'), () => {
+	console.log('inventory app listening on port ' + app.get('port') + ' and using nodemon');
 });
 
 exports.closeServer = function() {

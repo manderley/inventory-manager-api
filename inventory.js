@@ -19,7 +19,11 @@ let deleteItem = function(label) {
 };
 
 let getAllItems = function() {
-	return inventory;
+	let response = [];
+	for (let key in inventory) {
+		response.push(inventory[key]);
+	}
+	return response;
 };
 
 module.exports = {

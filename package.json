@@ -1,9 +1,9 @@
 {
-  "name": "inventory-app",
+  "name": "inventory-manager-api",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec",
+    "test": "PORT=3010 ./node_modules/.bin/jasmine-node spec",
     "start": "node server.js"
   },
   "author": "Rebecca Edwards",
