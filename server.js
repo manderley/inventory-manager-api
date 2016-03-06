@@ -16,11 +16,11 @@ app.get('/', (request, response) => {
 	});
 });
 
-app.get('/item', (request, response) => {
+app.get('/items', (request, response) => {
 	response.send(inventory.getAllItems());
-})
+});
 
-app.post('/item', (request, response) => {
+app.post('/items', (request, response) => {
 	let item = request.body;
 	try {
 		inventory.addItem(item);
@@ -31,7 +31,7 @@ app.post('/item', (request, response) => {
 	}
 });
 
-app.delete('/item/:label', (request, response) => {
+app.delete('/items/:label', (request, response) => {
 	let label = request.params.label;
 	try {
 		inventory.deleteItem(label);
@@ -42,6 +42,10 @@ app.delete('/item/:label', (request, response) => {
 	}
 });
 
-app.listen(3000, () => {
+var server = app.listen(3000, () => {
 	console.log('inventory app listening on port 3000 and using nodemon');
 });
+
+exports.closeServer = function() {
+	server.close();
+}

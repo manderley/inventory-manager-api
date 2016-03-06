@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/jasmine-node spec",
     "start": "node server.js"
   },
   "author": "Rebecca Edwards",
@@ -11,6 +11,8 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "jasmine-node": "^1.14.5",
+    "request": "^2.69.0"
   }
 }
