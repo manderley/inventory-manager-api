@@ -14,7 +14,7 @@ app.get('/items', (request, response) => {
 	let jsonpCallback = app.get('jsonp callback name');
 	let jsonp = (request.query[jsonpCallback]);
 	if (jsonp) {
-		response.send(request.query.callback +"("+JSON.stringify(inventory.getAllItems())+");");
+		response.send(request.query.callback + '(' + JSON.stringify(inventory.getAllItems()) + ');');
 	} else {
 		response.send(inventory.getAllItems());
 	}
