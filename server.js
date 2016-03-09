@@ -18,7 +18,13 @@ app.get('/', (request, response) => {
 });
 
 app.get('/items', (request, response) => {
-	response.send(inventory.getAllItems());
+	let jsonpCallback = app.get('jsonp callback name');
+	let jsonp = (request.query[jsonpCallback]);
+	if (jsonp) {
+		response.send(request.query.callback +"("+JSON.stringify(inventory.getAllItems())+");");
+	} else {
+		response.send(inventory.getAllItems());
+	}
 });
 
 app.post('/items', (request, response) => {
