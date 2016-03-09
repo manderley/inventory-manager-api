@@ -5,17 +5,10 @@ const bodyParser = require('body-parser');
 const inventory = require('./inventory.js');
 const app = express();
 
-app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000);
 
 app.use(bodyParser.urlencoded(({ extended: false })));
 app.use(bodyParser.json());
-
-app.get('/', (request, response) => {
-	response.render('index', {
-		pageTitle: 'Inventory'
-	});
-});
 
 app.get('/items', (request, response) => {
 	let jsonpCallback = app.get('jsonp callback name');
