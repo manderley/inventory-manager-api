@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "PORT=3010 ./node_modules/.bin/jasmine-node spec",
-    "start": "node server.js"
+    "start": "node ./lib/server.js"
   },
   "author": "Rebecca Edwards",
   "license": "ISC",
